@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Single Page Application with Data Table and Bar Chart Visualization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web application is built using ReactJS and includes a data table and a bar chart visualization. Users can interact with the data table and dynamically update the bar chart based on the selected rows.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+1. **Data Table**: Implemented with several columns, including at least 2 string value columns and 2 numeric value columns. Each table row has a checkbox as the first cell.
+2. **Initial Checkbox State**: Initially, only the first 5 row checkboxes in the data table are checked.
+3. **Bar Chart Visualization**: Utilizes Plotly.js library to create a bar chart visualization. Displays the values of one of the numeric columns of the checked data table rows as bars in the chart.
+4. **Real-time Updates**: When a checkbox in the data table is unchecked, the corresponding data is removed from the chart, and the chart updates in real-time as checkboxes are checked or unchecked.
+5. **Lazy Loading of Data**: Data is fetched from a backend service with lazy loading implemented. Only the data being displayed in the table is fetched, preventing unnecessary API calls.
+6. **Pagination and Search Bar**: Ability to fetch at least 100 rows of data. Pagination and a search bar are implemented to filter the data in the table, enhancing usability.
+7. **Layout and Visual Design**: Designed with a layout and visual design suited to this type of application, contributing to overall user experience.
 
-### `npm start`
+## Technologies Used
+ReactJS
+Plotly.js
+HTML
+CSS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
+Upon opening the application, users will see the data table with checkboxes and the initial bar chart visualization.
+Users can interact with the data table by checking or unchecking checkboxes.
+The bar chart will update in real-time based on the selected rows in the data table.
+Pagination and search functionality allow users to filter and navigate through the data effectively.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshots
+![Image](./image.png)
