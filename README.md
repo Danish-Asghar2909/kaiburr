@@ -2,6 +2,11 @@
 
 This web application is built using ReactJS and includes a data table and a bar chart visualization. Users can interact with the data table and dynamically update the bar chart based on the selected rows.
 
+## Preview
+
+You can preview the application [here](https://kaiburr-frontend.netlify.app/).
+
+
 ## Features
 
 1. **Data Table**: Implemented with several columns, including at least 2 string value columns and 2 numeric value columns. Each table row has a checkbox as the first cell.
