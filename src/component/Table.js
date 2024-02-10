@@ -6,7 +6,8 @@ const Table = () => {
   const [data, setData] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(5);
+  const [perPage] = useState(10);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchData = async () => {
     const start = (currentPage - 1) * perPage + 1;
@@ -26,6 +27,27 @@ const Table = () => {
     fetchData();
   }, [currentPage]);
 
+  useEffect(() => {
+    if (data.length > 0) {
+      const initialSelectedRows = data.slice(0, 5).map(item => item.id);
+      setSelectedRows(initialSelectedRows);
+    }
+  }, [data]);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredData = data.filter(item => {
+    const { id, userId, title, body } = item;
+    const searchTerm = searchQuery.toLowerCase();
+    return (
+      id.toString().includes(searchTerm) ||
+      userId.toString().includes(searchTerm) ||
+      title.toLowerCase().includes(searchTerm) ||
+      body.toLowerCase().includes(searchTerm)
+    );
+  });
 
   const handleCheckboxChange = (event, id) => {
     if (event.target.checked) {
@@ -39,25 +61,25 @@ const Table = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleClearSearch = () => {
+    setSearchQuery('');
+  };
+
   const renderTable = () => {
     return (
       <table>
         <thead>
           <tr>
+            <th>Checkbox</th>
             <th>ID</th>
             <th>UserID</th>
             <th>Title</th>
             <th>Body</th>
-            <th>Checkbox</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {filteredData.map((item) => (
             <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.userId}</td>
-              <td>{item.title}</td>
-              <td>{item.body}</td>
               <td>
                 <input
                   type="checkbox"
@@ -65,6 +87,10 @@ const Table = () => {
                   checked={selectedRows.includes(item.id)}
                 />
               </td>
+              <td>{item.id}</td>
+              <td>{item.userId}</td>
+              <td>{item.title}</td>
+              <td>{item.body}</td>
             </tr>
           ))}
         </tbody>
@@ -109,6 +135,15 @@ const Table = () => {
   return (
     <div className="Table">
       <h1>Data Table and Bar Chart Visualization</h1>
+      <div className="search-wrapper">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <button onClick={handleClearSearch}>Clear</button>
+      </div>
       {renderTable()}
       {renderPagination()}
       {selectedRows.length > 0 && renderBarChart()}
